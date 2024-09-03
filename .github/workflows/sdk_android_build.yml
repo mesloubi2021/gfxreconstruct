@@ -128,7 +128,7 @@ jobs:
         tag_name=`echo "${{ github.ref }}" | cut -d "/" -f 3`
         echo "::set-output name=tag_name::$tag_name"
     - name: Download artifacts
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v4.1.7
       with:
         name: ${{ matrix.config.artifact }}
         path: ./gfxreconstruct-${{ steps.get_tag_name.outputs.tag_name }}
@@ -136,7 +136,7 @@ jobs:
       run: |
         ${{ matrix.config.command }} gfxreconstruct-${{ steps.get_tag_name.outputs.tag_name }}-${{ matrix.config.suffix }} gfxreconstruct-${{ steps.get_tag_name.outputs.tag_name }}
     - name: Download release URL
-      uses: actions/download-artifact@v1
+      uses: actions/download-artifact@v4.1.7
       with:
         name: release_url
         path: ./
